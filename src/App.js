@@ -2,9 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Section from "./components/Section"
+import General from "./components/General"
+import Work from "./components/Work"
+import Education from "./components/Education"
+import MultiForm from "./components/MultiForm"
+
 function App() {
   return (
     <div className="App">
+      <Section name="General"/>
+      <Section />
+      <Section />
+      
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -24,3 +34,12 @@ function App() {
 }
 
 export default App;
+
+/*
+COMPONENTS:
+  general info
+  education experience
+  work experience
+
+Edit and submit button 
+*/
