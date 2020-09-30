@@ -1,6 +1,6 @@
 import React from "react"
 
-class Section extends React.Component {
+class IntroSection extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -8,9 +8,8 @@ class Section extends React.Component {
     render() {
         return (
             <div>
-                <{props.sect}/>
             </div>
         )
     }
 }
-export default Section
+export default IntroSection

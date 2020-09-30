@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Section from "./components/Section"
+import Section from "./components/IntroSection"
 import General from "./components/General"
 import Work from "./components/Work"
 import Education from "./components/Education"
@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="App">
       <Section name="General"/>
-      <Section />
-      <Section />
+      <MultiForm />
+      <MultiForm />
       
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
