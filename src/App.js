@@ -1,20 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Section from "./components/IntroSection"
-import General from "./components/General"
-import Work from "./components/Work"
-import Education from "./components/Education"
+import IntroSection from "./components/IntroSection"
 import MultiForm from "./components/MultiForm"
 
 function App() {
   return (
     <div className="App">
-      <Section name="General"/>
-      <MultiForm />
-      <MultiForm />
-      
+      <IntroSection sectionName="Personal Info"/>
+      <MultiForm sectionName="Education"/>
+      <MultiForm sectionName="Work"/>
+      {/*
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -29,6 +26,7 @@ function App() {
           Learn React
         </a>
       </header>
+      */}
     </div>
   );
 }
