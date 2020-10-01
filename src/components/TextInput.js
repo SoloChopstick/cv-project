@@ -2,9 +2,13 @@ import React from "react"
 
 function TextInput(props) {
     return (
-        <label> {props.fieldName}
-        <input type="text"></input>
-        </label>
+        <div>
+            <label> 
+                {props.fieldName}
+            </label>
+            <input type="text"></input>
+            <br/>
+        </div>
     )
 }
 

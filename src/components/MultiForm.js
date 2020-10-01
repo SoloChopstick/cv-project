@@ -1,4 +1,5 @@
 import React from "react"
+import TextInput from "./TextInput"
 
 class MultiForm extends React.Component {
     constructor(props) {
@@ -19,6 +20,12 @@ class MultiForm extends React.Component {
                 <h2>
                     {sectionName}
                 </h2>
+                <form>
+                    <TextInput fieldName="School: "/>
+                    <TextInput fieldName="Major: "/>
+                    <TextInput fieldName="Start Date: "/>
+                    <TextInput fieldName="End Date: "/>
+                </form>
             </div>
         )
     }
