@@ -34,6 +34,7 @@ class IntroSection extends React.Component {
 
     render() {
         //deconstructors for easier calls
+        //const products = this.props.arr.map(item => <TextOutput fieldName={item} value={item}/>);
         const {sectionName} = this.props;
         const {firstName, lastName, email, phone, isSubmitted} = this.state;
 
@@ -51,36 +52,46 @@ class IntroSection extends React.Component {
         }
         else {
             content = (
-            <div className="display">
+            <div>
                 <form>
-                    <label>First Name:</label>
-                    <input type="text" name="firstName" onChange={this.handleChange} required></input>
-                    <br/>
-                    <label>Last Name:</label>
-                    <input type="text" name="lastName" onChange={this.handleChange} required></input>
-                    <br/>
-                    <label>Phone:</label>
-                    <input type="text" name="email" onChange={this.handleChange} required></input>
-                    <br/>
-                    <label>Email:</label>
-                    <input type="text" name="phone" onChange={this.handleChange} required></input>
-                    <br/>
-                    {/*
-                    <TextInput fieldName="First Name: " name="firstName" value={firstName} onChange={() => this.handleChange} required/>
-                    <TextInput fieldName="Last Name: " name="lastName" value={lastName} onChange={this.handleChange} required/>
-                    <TextInput fieldName="Email: " name="email" value={email} onChange={this.handleChange} required/>
-                    <TextInput fieldName="Phone: " name="phone" value={phone} onChange={this.handleChange} required/>
-                    */}
-                    <input type="submit" onClick={this.handleClick}></input>
+                    <div className="form-row align-items-center">
+                        <div className="col-auto">
+                            <label>First Name:</label>
+                            <input className="form-control mb-2" type="text" name="firstName" onChange={this.handleChange} required placeholder="Han"></input>
+                        </div>
+                        <div className="col-auto">
+                            <label>Last Name:</label>
+                            <input className="form-control mb-2" type="text" name="lastName" onChange={this.handleChange} required placeholder="Xie"></input>
+                        </div>
+                    </div>
+                    <div className="form-row align-items-center">
+                        <div className="col-auto">
+                            <label>Phone:</label>
+                            <input className="form-control mb-2" type="text" name="email" onChange={this.handleChange} required></input>
+                        </div>
+                        <div className="col-auto">
+                            <label>Email:</label>
+                            <input className="form-control mb-2" type="text" name="phone" onChange={this.handleChange} required></input>
+                        </div>
+                    </div>
+                    <div className="form-row align-items-center">
+                        <div className="col-auto">
+                            <input type="submit" className="btn btn-dark" Click={this.handleClick}></input>
+                        </div>
+                    </div>
                 </form>
             </div>
             )
         }
         return (
             <div className="container">
-                <h2>{sectionName}</h2>
-                <div className="container">
-                    {content}
+                <div className="card">
+                    <div className="p-3 mb-2 bg-dark text-white">
+                        <h2>{sectionName}</h2>
+                        <div className="card-body">
+                            {content}
+                        </div>
+                    </div>
                 </div>
             </div>
         )
