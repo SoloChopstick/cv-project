@@ -42,11 +42,15 @@ class IntroSection extends React.Component {
         if (isSubmitted) {
             content = 
             (
-            <div className="display">
-                <TextOutput fieldName="First Name: " value={firstName}/>
-                <TextOutput fieldName="Last Name: " value={lastName}/>
-                <TextOutput fieldName="Email: " value={email}/>
-                <TextOutput fieldName="Phone: " value={phone}/>
+            <div className="form-row align-items-center">
+                <div className="col-auto">
+                    <TextOutput fieldName="First Name: " value={firstName}/>
+                    <TextOutput fieldName="Last Name: " value={lastName}/>
+                </div>
+                <div className="col-auto">
+                    <TextOutput fieldName="Email: " value={email}/>
+                    <TextOutput fieldName="Phone: " value={phone}/>
+                </div>
             </div>
             )
         }
@@ -76,7 +80,7 @@ class IntroSection extends React.Component {
                     </div>
                     <div className="form-row align-items-center">
                         <div className="col-auto">
-                            <input type="submit" className="btn btn-dark" Click={this.handleClick}></input>
+                            <input type="submit" className="btn btn-success" Click={this.handleClick}></input>
                         </div>
                     </div>
                 </form>

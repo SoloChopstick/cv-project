@@ -16,6 +16,7 @@ class MultiForm extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.edit = this.edit.bind(this);
     }
 
     handleChange = e => {
@@ -38,6 +39,12 @@ class MultiForm extends React.Component {
         })
     }
 
+    edit (e) {
+        this.setState({
+            isSubmitted : false
+        })
+    }
+
     render() {
         const {sectionName} = this.props;
         const {location, type, startDate, endDate, isSubmitted} = this.state;
@@ -46,39 +53,62 @@ class MultiForm extends React.Component {
             if (isSubmitted) {
                 content = 
                 (
-                <div className="row">
-                    <div className="col-sm">
-                    <TextOutput fieldName="School Name: " value={location}/>
+                <div>
+                    <div className="row">
+                        <div className="col-sm">
+                        <TextOutput fieldName="School Name: " value={location}/>
+                        </div>
+                        <div className="col-sm">
+                        <TextOutput fieldName="Major: " value={type}/>
+                        </div>
                     </div>
-                    <div className="col-sm">
-                    <TextOutput fieldName="Major: " value={type}/>
+                    <div className="row">
+                        <div className="col-sm">
+                        <TextOutput fieldName="Start Date: " value={startDate}/>
+                        </div>
+                        <div className="col-sm">
+                        <TextOutput fieldName="End Date: " value={endDate}/>
+                        </div>
                     </div>
-                    <div className="col-sm">
-                    <TextOutput fieldName="Start Date: " value={startDate}/>
-                    </div>
-                    <div className="col-sm">
-                    <TextOutput fieldName="End Date: " value={endDate}/>
+                    <div className="row">
+                        <div className="col-sm">
+                            <form>
+                                <button class="btn btn-warning" type="button" value="Edit" onClick={this.edit}>Edit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 )
             }
             else {
                 content = 
-                (
+                ( 
                     <form>
-                        <label>School Name:</label>
-                        <input type="text" name="location" onChange={this.handleChange} required></input>
-                        <br/>
-                        <label>Major:</label>
-                        <input type="text" name="type" onChange={this.handleChange} required></input>
-                        <br/>
-                        <label>Start Date:</label>
-                        <input type="text" name="startDate" onChange={this.handleChange} required></input>
-                        <br/>
-                        <label>End Date:</label>
-                        <input type="text" name="endDate" onChange={this.handleChange} required></input>
-                        <br/>
-                        <input type="submit" onClick={this.handleClick}></input>
+                        <div className="form-row align-items-center">
+                            <div className="col-auto">
+                                <label>School Name:</label>
+                                <input className="form-control mb-2" type="text" name="location" onChange={this.handleChange} value={location} required></input>
+                            </div>
+                            <div className="col-auto">
+                                <label>Major:</label>
+                                <input className="form-control mb-2" type="text" name="type" onChange={this.handleChange} value={type} required></input>
+                            </div>
+                        </div>
+                        <div className="form-row align-items-center">
+                            <div className="col-auto">
+                                <label>Start Date:</label>
+                                <input className="form-control mb-2" type="text" name="startDate" onChange={this.handleChange} value={startDate} required></input>
+                            </div>
+                            <div className="col-auto">
+                                <label>End Date:</label>
+                                <input className="form-control mb-2" type="text" name="endDate" onChange={this.handleChange} value={endDate} required></input>
+                            </div>
+                        </div>
+                        <div className="form-row align-items-center">
+                            <div className="col-auto">
+                                <input className="btn btn-success" type="submit" onClick={this.handleClick}></input>
+                            </div>
+                        </div>
                     </form>
                 )
             }
@@ -87,30 +117,61 @@ class MultiForm extends React.Component {
             if (isSubmitted) {
                 content = 
                 (
-                <div className="display">
-                    <TextOutput fieldName="Company Name: " value={location}/>
-                    <TextOutput fieldName="Job Title: " value={type}/>
-                    <TextOutput fieldName="Start Date: " value={startDate}/>
-                    <TextOutput fieldName="End Date: " value={endDate}/>
+                <div>
+                    <div className="row">
+                        <div className="col-sm">
+                        <TextOutput fieldName="Company Name: " value={location}/>
+                        </div>
+                        <div className="col-sm">
+                        <TextOutput fieldName="Job Title: " value={type}/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                        <TextOutput fieldName="Start Date: " value={startDate}/>
+                        </div>
+                        <div className="col-sm">
+                        <TextOutput fieldName="End Date: " value={endDate}/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <form>
+                                <button class="btn btn-warning" type="button" value="Edit" onClick={this.edit}>Edit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 )
             }
             else {
                 content = (
                     <form>
-                        <label>Company Name:</label>
-                        <input type="text" name="location" onChange={this.handleChange} required></input>
-                        <br/>
-                        <label>Job title:</label>
-                        <input type="text" name="type" onChange={this.handleChange} required></input>
-                        <br/>
-                        <label>Start Date:</label>
-                        <input type="text" name="startDate" onChange={this.handleChange} required></input>
-                        <br/>
-                        <label>End Date:</label>
-                        <input type="text" name="endDate" onChange={this.handleChange} required></input>
-                        <br/>
-                        <input type="submit" onClick={this.handleClick}></input>
+                        <div className="form-row align-items-center">
+                            <div className="col-auto">
+                                <label>Company Name:</label>
+                                <input type="text" className="form-control mb-2" name="location" onChange={this.handleChange} value={location} required></input>
+                            </div>
+                            <div className="col-auto">
+                                <label>Job title:</label>
+                                <input type="text" className="form-control mb-2" name="type" onChange={this.handleChange} value={type} required></input>
+                            </div>
+                        </div>
+                        <div className="form-row align-items-center">
+                            <div className="col-auto">
+                                <label>Start Date:</label>
+                                <input type="text" className="form-control mb-2" name="startDate" onChange={this.handleChange} value={startDate} required></input>
+                            </div>
+                            <div className="col-auto">
+                                <label>End Date:</label>
+                                <input type="text" className="form-control mb-2" name="endDate" onChange={this.handleChange} value={endDate} required></input>
+                            </div>
+                        </div>
+                        <div className="form-row align-items-center">
+                            <div className="col-auto">
+                                <input type="submit" className="btn btn-success" onClick={this.handleClick}></input>
+                            </div>
+                        </div>
                     </form>
                 )
             }
