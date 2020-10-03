@@ -1,6 +1,7 @@
 import React from "react"
 import TextInput from "./TextInput"
-import TextOutput from "./TextOutput"
+import TextOutput from "./contentComponents/TextOutput"
+import SubmittedContent from "./contentComponents/SubmittedContent"
 
 class MultiForm extends React.Component {
     constructor(props) {
@@ -17,10 +18,11 @@ class MultiForm extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.edit = this.edit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
 
     increase = e => {
+        console.log(this.state.count)
         this.setState(prevState => {
             return ({
                 count: prevState.count + 1
@@ -35,7 +37,7 @@ class MultiForm extends React.Component {
         })
     }
 
-    handleClick (e) {
+    handleClick = (e) => {
         e.preventDefault();
         this.setState({
             isSubmitted : true
@@ -48,7 +50,7 @@ class MultiForm extends React.Component {
         })
     }
 
-    edit (e) {
+    handleEdit = (e) => {
         this.setState({
             isSubmitted : false
         })
@@ -59,131 +61,14 @@ class MultiForm extends React.Component {
         const {location, type, startDate, endDate, isSubmitted} = this.state;
         let content = "";
         if(sectionName === "Education") {
-            if (isSubmitted) {
-                content = 
-                (
-                <div>
-                    <div className="row">
-                        <div className="col-sm">
-                        <TextOutput fieldName="School Name: " value={location}/>
-                        </div>
-                        <div className="col-sm">
-                        <TextOutput fieldName="Major: " value={type}/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                        <TextOutput fieldName="Start Date: " value={startDate}/>
-                        </div>
-                        <div className="col-sm">
-                        <TextOutput fieldName="End Date: " value={endDate}/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <form>
-                                <button class="btn btn-warning" type="button" value="Edit" onClick={this.edit}>Edit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                )
-            }
-            else {
-                content = 
-                ( 
-                    <form>
-                        <div className="form-row align-items-center">
-                            <div className="col-auto">
-                                <label>School Name:</label>
-                                <input className="form-control mb-2" type="text" name="location" onChange={this.handleChange} value={location} required></input>
-                            </div>
-                            <div className="col-auto">
-                                <label>Major:</label>
-                                <input className="form-control mb-2" type="text" name="type" onChange={this.handleChange} value={type} required></input>
-                            </div>
-                        </div>
-                        <div className="form-row align-items-center">
-                            <div className="col-auto">
-                                <label>Start Date:</label>
-                                <input className="form-control mb-2" type="text" name="startDate" onChange={this.handleChange} value={startDate} required></input>
-                            </div>
-                            <div className="col-auto">
-                                <label>End Date:</label>
-                                <input className="form-control mb-2" type="text" name="endDate" onChange={this.handleChange} value={endDate} required></input>
-                            </div>
-                        </div>
-                        <div className="form-row align-items-center">
-                            <div className="col-auto">
-                                <input className="btn btn-success" type="submit" onClick={this.handleClick}></input>
-                            </div>
-                        </div>
-                    </form>
-                )
-            }
+            content = isSubmitted ?
+                    <SubmittedContent data={this.state} onClick={this.handleEdit}/> :
+                    <FormContent data={this.data}/>
         }
         else if (sectionName === "Work") {
-            if (isSubmitted) {
-                content = 
-                (
-                <div>
-                    <div className="row">
-                        <div className="col-sm">
-                        <TextOutput fieldName="Company Name: " value={location}/>
-                        </div>
-                        <div className="col-sm">
-                        <TextOutput fieldName="Job Title: " value={type}/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                        <TextOutput fieldName="Start Date: " value={startDate}/>
-                        </div>
-                        <div className="col-sm">
-                        <TextOutput fieldName="End Date: " value={endDate}/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <form>
-                                <button class="btn btn-warning" type="button" value="Edit" onClick={this.edit}>Edit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                )
-            }
-            else {
-                content = (
-                    <form>
-                        <div className="form-row align-items-center">
-                            <div className="col-auto">
-                                <label>Company Name:</label>
-                                <input type="text" className="form-control mb-2" name="location" onChange={this.handleChange} value={location} required></input>
-                            </div>
-                            <div className="col-auto">
-                                <label>Job title:</label>
-                                <input type="text" className="form-control mb-2" name="type" onChange={this.handleChange} value={type} required></input>
-                            </div>
-                        </div>
-                        <div className="form-row align-items-center">
-                            <div className="col-auto">
-                                <label>Start Date:</label>
-                                <input type="text" className="form-control mb-2" name="startDate" onChange={this.handleChange} value={startDate} required></input>
-                            </div>
-                            <div className="col-auto">
-                                <label>End Date:</label>
-                                <input type="text" className="form-control mb-2" name="endDate" onChange={this.handleChange} value={endDate} required></input>
-                            </div>
-                        </div>
-                        <div className="form-row align-items-center">
-                            <div className="col-auto">
-                                <input type="submit" className="btn btn-success" onClick={this.handleClick}></input>
-                            </div>
-                        </div>
-                    </form>
-                )
-            }
+            content = isSubmitted ?
+                    <SubmittedContent data={this.state} onClick={this.handleEdit}/> :
+                    <FormContent data={this.data}/>
         }
 
         return (

@@ -1,6 +1,5 @@
 import React from "react"
-import TextInput from "./TextInput"
-import TextOutput from "./TextOutput"
+import TextOutput from "./contentComponents/TextOutput"
 
 class IntroSection extends React.Component {
     constructor(props) {
@@ -80,7 +79,7 @@ class IntroSection extends React.Component {
                     </div>
                     <div className="form-row align-items-center">
                         <div className="col-auto">
-                            <input type="submit" className="btn btn-success" Click={this.handleClick}></input>
+                            <input type="submit" className="btn btn-success" onClick={this.handleClick}></input>
                         </div>
                     </div>
                 </form>
