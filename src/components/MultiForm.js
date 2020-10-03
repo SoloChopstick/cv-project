@@ -11,12 +11,21 @@ class MultiForm extends React.Component {
             type: "",
             startDate: "",
             endDate: "",
-            isSubmitted: false
+            isSubmitted: false,
+            count: 1
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.edit = this.edit.bind(this);
+    }
+
+    increase = e => {
+        this.setState(prevState => {
+            return ({
+                count: prevState.count + 1
+            })
+        })
     }
 
     handleChange = e => {
