@@ -1,7 +1,7 @@
 import React from "react"
-import IntroSection from "./IntroSection"
-import Education from "./Education"
-import Work from "./Work"
+import IntroSection from "../personalComponents/IntroSection"
+import Education from "../educationComponents/Education"
+import Work from "../workComponents/Work"
 
 function SectionCard(props) {
     let content = ""

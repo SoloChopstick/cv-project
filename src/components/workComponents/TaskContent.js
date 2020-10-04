@@ -1,5 +1,5 @@
 import React from "react"
-
+import TextOutput from "../contentComponents/TextOutput"
 class TaskContent extends React.Component {
     constructor(props) {
         super(props)
@@ -16,7 +16,15 @@ class TaskContent extends React.Component {
     }
 
     render() {
-        return (
+        const {isSubmitted, number} = this.props;
+        console.log(this.state.task)
+        let content = isSubmitted ? 
+        (
+            <div>
+                Task {number} : {this.state.task}
+            </div>
+        ) :
+        (            
             <div>
                 <form>
                     <label>Task {this.props.number}:</label>
@@ -29,6 +37,10 @@ class TaskContent extends React.Component {
                     </input>
                 </form>
             </div>
+        )
+
+        return (
+            content
         )
     }
 }

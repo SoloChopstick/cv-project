@@ -1,10 +1,9 @@
 import React from "react"
-import SubmittedContent from "./contentComponents/SubmittedContent"
-import FormContent from "./contentComponents/FormContent"
-import Education from "./Education"
-import Work from "./Work"
-import IntroSection from "./IntroSection"
-import SectionCard from"./SectionCard"
+import SubmittedContent from "./personalComponents/SubmittedPersonalContent"
+import Education from "./educationComponents/Education"
+import Work from "./workComponents/Work"
+import IntroSection from "./personalComponents/IntroSection"
+import SectionCard from"./contentComponents/SectionCard"
 
 class MultiForm extends React.Component {
     constructor(props) {
@@ -76,23 +75,23 @@ class MultiForm extends React.Component {
         //create the number of desired schools
         let educationContent = [];
         for (let i = 0; i < this.state.educationCount; i++) {
-            educationContent.push(<Education key={i} number={i+1}/>);
+            educationContent.push(<Education key={i} number={i+1} isSubmitted={isSubmitted}/>);
         }
 
         //create the number of desired work experiences
         let workContent = [];
         for (let i = 0; i < this.state.workCount; i++) {
-            workContent.push(<Work key={i} number={i+1}/>);
+            workContent.push(<Work key={i} number={i+1} isSubmitted={isSubmitted}/>);
         }
-
-        let content = isSubmitted ? <SubmittedContent education={educationContent} count={educationCount}/> :
+        //isSubmitted ? <SubmittedContent education={educationContent} count={educationCount}/> :
+        let content =
             (            
             <div className="container">
                 <div className="card">
                     <div className="p-3 mb-2 bg-dark text-white">
                         <h2> PERSONAL INFO </h2>
                         <div className="card-body">
-                            <IntroSection />
+                            <IntroSection isSubmitted={isSubmitted}/>
                         </div>
                     </div>
                 </div>
@@ -129,7 +128,11 @@ class MultiForm extends React.Component {
                     </div>
                 </div>
                 <div className="card">
+                    {isSubmitted ? 
+                    <button className="btn btn-warning" type="button" value="Edit" onClick={this.handleEdit}>EDIT</button>
+                    :
                     <input className="btn btn-success" type="submit" onClick={this.handleClick} value="SUBMIT"></input>
+                    }
                 </div>
 
                 {/*

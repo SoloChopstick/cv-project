@@ -1,5 +1,6 @@
 import React from "react"
-import PersonalContent from "./contentComponents/PersonalContent"
+import PersonalContent from "./PersonalContent"
+import SubmittedContent from "./SubmittedPersonalContent"
 
 class IntroSection extends React.Component {
     constructor(props) {
@@ -10,7 +11,6 @@ class IntroSection extends React.Component {
             lastName: "",
             email: "",
             phone: "",
-            isSubmitted: false,
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,10 +32,18 @@ class IntroSection extends React.Component {
     }
 
     render() {
-        return (
-            <PersonalContent 
+        const {isSubmitted} = this.props;
+
+        let content = isSubmitted ? 
+        <SubmittedContent data={this.state} /> : 
+        (            
+        <PersonalContent 
             data={this.state} 
             handleChange={this.handleChange} />
+        )
+
+        return (
+            content
         )
     }
 }

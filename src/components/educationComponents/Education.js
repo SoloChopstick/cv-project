@@ -1,5 +1,6 @@
 import React from "react"
-import EducationContent from "./contentComponents/EducationContent"
+import EducationContent from "./EducationContent"
+import SubmittedEdContent from "./SubmittedEdContent"
 
 class Education extends React.Component {
     constructor(props) {
@@ -14,18 +15,26 @@ class Education extends React.Component {
     }
 
     handleChange = (e) => {
-        console.log(this.state.degree)
+        console.log(this.state.school)
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
     render() {
-        return (
-            <EducationContent 
+        const {isSubmitted} = this.props;
+
+        let content = isSubmitted ? 
+        <SubmittedEdContent data={this.state} /> : 
+        (            
+        <EducationContent 
             data={this.state} 
             handleChange={this.handleChange}
             number = {this.props.number}/>
+        )
+
+        return (
+            content
         )
     }
 }

@@ -1,6 +1,7 @@
 import React from "react"
-import WorkContent from "./contentComponents/WorkContent"
-import TaskContent from "./contentComponents/TaskContent"
+import WorkContent from "./WorkContent"
+import TaskContent from "./TaskContent"
+import SubmittedWorkContent from "./SubmittedWorkContent"
 
 class Work extends React.Component {
     constructor(props) {
@@ -31,20 +32,31 @@ class Work extends React.Component {
     }
 
     render() {
+        const {isSubmitted} = this.props;
         let tasksContent = [];
         for (let i = 0; i < this.state.taskCount; i++) {
-            tasksContent.push(<TaskContent key={i} number={i+1}/>)
+            tasksContent.push(<TaskContent key={i} number={i+1} isSubmitted={isSubmitted}/>)
         }
 
+        let content = isSubmitted ? 
+        <div>
+            <SubmittedWorkContent data={this.state}/>
+            {tasksContent}
+        </div>
+        : 
+        (            
+        <div>
+            <WorkContent 
+            data={this.state} 
+            handleChange={this.handleChange}
+            number={this.props.number}
+            addTask={this.addTask} />
+            {tasksContent}
+        </div>
+        )
+
         return ( 
-            <div>
-                <WorkContent 
-                data={this.state} 
-                handleChange={this.handleChange}
-                number={this.props.number}
-                addTask={this.addTask} />
-                {tasksContent}
-            </div>
+            content
         )
     }
 }
