@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# CV-Builde project
+Live Preview: http://solochopstick.github.io/cv-project
+
 ## Available Scripts
 
 In the project directory, you can run:

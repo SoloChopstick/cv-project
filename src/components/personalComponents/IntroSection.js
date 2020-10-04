@@ -1,6 +1,6 @@
 import React from "react"
 import PersonalContent from "./PersonalContent"
-import SubmittedContent from "./SubmittedPersonalContent"
+import SubmittedPersonalContent from "./SubmittedPersonalContent"
 
 class IntroSection extends React.Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class IntroSection extends React.Component {
         const {isSubmitted} = this.props;
 
         let content = isSubmitted ? 
-        <SubmittedContent data={this.state} /> : 
+        <SubmittedPersonalContent data={this.state} /> : 
         (            
         <PersonalContent 
             data={this.state} 
