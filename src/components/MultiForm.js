@@ -1,7 +1,6 @@
 import React from "react"
-import TextInput from "./TextInput"
-import TextOutput from "./contentComponents/TextOutput"
 import SubmittedContent from "./contentComponents/SubmittedContent"
+import FormContent from "./contentComponents/FormContent"
 
 class MultiForm extends React.Component {
     constructor(props) {
@@ -22,7 +21,6 @@ class MultiForm extends React.Component {
     }
 
     increase = e => {
-        console.log(this.state.count)
         this.setState(prevState => {
             return ({
                 count: prevState.count + 1
@@ -31,7 +29,6 @@ class MultiForm extends React.Component {
     }
 
     handleChange = e => {
-        console.log(e.target.value)
         this.setState({
             [e.target.name] : e.target.value
         })
@@ -41,12 +38,6 @@ class MultiForm extends React.Component {
         e.preventDefault();
         this.setState({
             isSubmitted : true
-        })
-    }
-
-    newSection (e) {
-        this.setState({
-
         })
     }
 
@@ -63,12 +54,20 @@ class MultiForm extends React.Component {
         if(sectionName === "Education") {
             content = isSubmitted ?
                     <SubmittedContent data={this.state} onClick={this.handleEdit}/> :
-                    <FormContent data={this.data}/>
+                    <FormContent 
+                        data={this.state} 
+                        handleChange={this.handleChange} 
+                        handleClick={this.handleClick} 
+                        increase={this.increase}/>
         }
         else if (sectionName === "Work") {
             content = isSubmitted ?
                     <SubmittedContent data={this.state} onClick={this.handleEdit}/> :
-                    <FormContent data={this.data}/>
+                    <FormContent 
+                        data={this.state} 
+                        handleChange={this.handleChange}
+                        handleClick={this.handleClick} 
+                        increase={this.increase}/>
         }
 
         return (

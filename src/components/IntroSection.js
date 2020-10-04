@@ -41,7 +41,7 @@ class IntroSection extends React.Component {
         if (isSubmitted) {
             content = 
             (
-            <div className="form-row align-items-center">
+            <div className="form-row justify-content-center align-items-center">
                 <div className="col-auto">
                     <TextOutput fieldName="First Name: " value={firstName}/>
                     <TextOutput fieldName="Last Name: " value={lastName}/>
@@ -57,7 +57,7 @@ class IntroSection extends React.Component {
             content = (
             <div>
                 <form>
-                    <div className="form-row align-items-center">
+                    <div className="form-row align-items-center justify-content-center">
                         <div className="col-auto">
                             <label>First Name:</label>
                             <input className="form-control mb-2" type="text" name="firstName" onChange={this.handleChange} required placeholder="Han"></input>
@@ -67,7 +67,7 @@ class IntroSection extends React.Component {
                             <input className="form-control mb-2" type="text" name="lastName" onChange={this.handleChange} required placeholder="Xie"></input>
                         </div>
                     </div>
-                    <div className="form-row align-items-center">
+                    <div className="form-row align-items-center justify-content-center">
                         <div className="col-auto">
                             <label>Phone:</label>
                             <input className="form-control mb-2" type="text" name="email" onChange={this.handleChange} required></input>
@@ -77,7 +77,7 @@ class IntroSection extends React.Component {
                             <input className="form-control mb-2" type="text" name="phone" onChange={this.handleChange} required></input>
                         </div>
                     </div>
-                    <div className="form-row align-items-center">
+                    <div className="form-row align-items-center justify-content-center">
                         <div className="col-auto">
                             <input type="submit" className="btn btn-success" onClick={this.handleClick}></input>
                         </div>
