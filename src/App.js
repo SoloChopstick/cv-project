@@ -5,6 +5,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MultiForm from "./components/MultiForm"
 
 class App extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      isSubmitted: false,
+    }
+  }
+
+  handleClick = (e) => {
+    this.setState({
+      isSubmitted: true
+    })
+
+  }
   render() {
     return (
       <div className="App">
@@ -19,6 +33,8 @@ class App extends React.Component {
             <MultiForm />
           </div>
         </div>
+        <footer>
+        </footer>
       </div>
     );
   }

@@ -14,6 +14,7 @@ class Education extends React.Component {
     }
 
     handleChange = (e) => {
+        console.log(this.state.degree)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -23,7 +24,8 @@ class Education extends React.Component {
         return (
             <EducationContent 
             data={this.state} 
-            handleChange={this.handleChange} />
+            handleChange={this.handleChange}
+            number = {this.props.number}/>
         )
     }
 }

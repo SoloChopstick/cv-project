@@ -11,26 +11,42 @@ class MultiForm extends React.Component {
         super(props)
 
         this.state = {
-            location: "",
-            type: "",
-            startDate: "",
-            endDate: "",
             isSubmitted: false,
             education: [],
             educationCount: 1,
             work: [],
             workCount: 1,
         }
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleEdit = this.handleEdit.bind(this);
     }
 
     addSchool = e => {
         this.setState(prevState => {
             return ({
-                [e.target.name]: prevState.educationCount + 1
+                educationCount: prevState.educationCount + 1
+            })
+        })
+    }
+
+    addWork = e => {
+        this.setState(prevState => {
+            return ({
+                workCount: prevState.workCount + 1
+            })
+        })
+    }
+
+    deleteSchool = e => {
+        this.setState(prevState => {
+            return ({
+                educationCount: prevState.educationCount - 1
+            })
+        })
+    }
+
+    deleteWork = e => {
+        this.setState(prevState => {
+            return ({
+                workCount: prevState.workCount - 1
             })
         })
     }
@@ -55,41 +71,80 @@ class MultiForm extends React.Component {
     }
 
     render() {
-        const {sectionName} = this.props;
-        const {location, type, startDate, endDate, isSubmitted} = this.state;
-        let content = "";
-        return (
+        const {isSubmitted, education, work, educationCount, workCount} = this.state;
+
+        //create the number of desired schools
+        let educationContent = [];
+        for (let i = 0; i < this.state.educationCount; i++) {
+            educationContent.push(<Education key={i} number={i+1}/>);
+        }
+
+        //create the number of desired work experiences
+        let workContent = [];
+        for (let i = 0; i < this.state.workCount; i++) {
+            workContent.push(<Work key={i} number={i+1}/>);
+        }
+
+        let content = isSubmitted ? <SubmittedContent education={educationContent} count={educationCount}/> :
+            (            
             <div className="container">
+                <div className="card">
+                    <div className="p-3 mb-2 bg-dark text-white">
+                        <h2> PERSONAL INFO </h2>
+                        <div className="card-body">
+                            <IntroSection />
+                        </div>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="p-3 mb-2 bg-dark text-white">
+                        <h2> EDUCATION </h2>
+                        <div className="card-body">
+                            {educationContent}
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <input className="btn btn-success" type="button" onClick={this.addSchool} value="Add School"></input>
+                            </div>
+                            <div className="col">
+                                <input className="btn btn-danger" type="button" onClick={this.deleteSchool} value="Del School"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="p-3 mb-2 bg-dark text-white">
+                        <h2> WORK EXPERIENCE </h2>
+                        <div className="card-body">
+                            {workContent}
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <input className="btn btn-success" type="button" onClick={this.addWork} value="Add Work"></input>
+                            </div>
+                            <div className="col">
+                                <input className="btn btn-danger" type="button" onClick={this.deleteWork} value="Del Work"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="card">
+                    <input className="btn btn-success" type="submit" onClick={this.handleClick} value="SUBMIT"></input>
+                </div>
+
+                {/*
                 <SectionCard title="PERSONAL INFO"/>
                 <SectionCard title="EDUCATION"/>
+                <input className="btn btn-success" type="button" onClick={this.addSchool} value="Add School"></input>
                 <SectionCard title="WORK EXPERIENCE"/>
+                <input className="btn btn-success" type="button" onClick={this.addWork} value="Add Section"></input>
                 <input className="btn btn-success" type="submit" onClick={this.handleClick}></input>
+                */}
             </div>
+            );
+        return (
+            content
         )
-        /*
-        if(sectionName === "Education") {
-            content = isSubmitted ?
-                    <SubmittedContent data={this.state} onClick={this.handleEdit}/> :
-                    <FormContent 
-                        data={this.state} 
-                        handleChange={this.handleChange} 
-                        handleClick={this.handleClick} 
-                        increase={this.increase}
-                        location="School"
-                        type="Degree"/>
-        }
-        else if (sectionName === "Work") {
-            content = isSubmitted ?
-                    <SubmittedContent data={this.state} onClick={this.handleEdit}/> :
-                    <FormContent 
-                        data={this.state} 
-                        handleChange={this.handleChange}
-                        handleClick={this.handleClick} 
-                        increase={this.increase}
-                        location="Company"
-                        type="Job Title"/>
-        }
-        */
     }
 }
 
