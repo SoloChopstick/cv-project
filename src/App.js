@@ -2,29 +2,9 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import IntroSection from "./components/IntroSection"
 import MultiForm from "./components/MultiForm"
 
 class App extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-      education: {
-        schoolName: "",
-        majorName: "",
-        startDate: "",
-        endDate: ""
-      },
-      work: {
-        companyName: "",
-        jobName: "",
-        startDate: "",
-        endDate: ""
-      }
-    }
-  }
-  
   render() {
     return (
       <div className="App">
@@ -35,10 +15,10 @@ class App extends React.Component {
           <div className="card">
             <h1>CV BUILDER</h1>
           </div>
+          <div className="card-body">
+            <MultiForm />
+          </div>
         </div>
-        <IntroSection sectionName="Personal Info" />
-        <MultiForm sectionName="Education" data={this.state.education}/>
-        <MultiForm sectionName="Work" data={this.state.work}/>
       </div>
     );
   }

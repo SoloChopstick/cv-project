@@ -1,16 +1,16 @@
 import React from "react"
 
-function FormContent(props) {
+function WorkContent(props) {
     return (
         <form> 
             <div className="form-row justify-content-center">
                 <div className="col-auto">
-                    <label>School:</label>
-                    <input className="form-control mb-2" type="text" name="school" onChange={props.handleChange} value={props.data.school} required></input>
+                    <label>Company:</label>
+                    <input className="form-control mb-2" type="text" name="company" onChange={props.handleChange} value={props.data.company} required placeholder="Microsoft"></input>
                 </div>
                 <div className="col-auto">
-                    <label>Degree:</label>
-                    <input className="form-control mb-2" type="text" name="degree" onChange={props.handleChange} value={props.data.degree} required></input>
+                    <label>Job Title:</label>
+                    <input className="form-control mb-2" type="text" name="job" onChange={props.handleChange} value={props.data.job} required placeholder="Software Engineer"></input>
                 </div>
             </div>
             <div className="form-row justify-content-center">
@@ -23,17 +23,12 @@ function FormContent(props) {
                     <input className="form-control mb-2" type="date" name="endDate" onChange={props.handleChange} value={props.data.xendDate} required></input>
                 </div>
             </div>
-            {/*
             <div className="form-row justify-content-center">
-                <div className="col-auto">
-                    <input className="btn btn-success" type="submit" onClick={props.handleClick}></input>
-                </div>
                 <div className="col-auto">
                     <input className="btn btn-success" type="button" onClick={props.increase} value="Add Section"></input>
                 </div>
             </div>
-            */}
         </form>
     )
 }
-export default FormContent
+export default WorkContent
